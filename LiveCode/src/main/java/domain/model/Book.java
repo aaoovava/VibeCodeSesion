@@ -2,11 +2,13 @@ package domain.model;
 
 import domain.exception.BookNotAvailableException;
 import domain.valueobject.ISBN;
+import lombok.Getter;
 
 import java.util.UUID;
 
 // TOGAF: Business Architecture — Domain Entity
 // Key principle: business rules live here, not in services!
+@Getter
 public class Book {
 
     private final UUID id;
@@ -17,10 +19,10 @@ public class Book {
     private String borrowedBy; // reader's name or null
 
     public Book(UUID id, ISBN isbn, String title, String author) {
-        this.id        = id;
-        this.isbn      = isbn;
-        this.title     = title;
-        this.author    = author;
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
         this.available = true;
         this.borrowedBy = null;
     }
@@ -48,13 +50,6 @@ public class Book {
     }
 
     // -- Getters -------------------------------------------------------------
-
-    public UUID   getId()         { return id; }
-    public ISBN   getIsbn()       { return isbn; }
-    public String getTitle()      { return title; }
-    public String getAuthor()     { return author; }
-    public boolean isAvailable()  { return available; }
-    public String getBorrowedBy() { return borrowedBy; }
 
     @Override
     public String toString() {

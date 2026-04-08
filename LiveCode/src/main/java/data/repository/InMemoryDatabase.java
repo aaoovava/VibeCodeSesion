@@ -11,7 +11,7 @@ import java.util.*;
 public class InMemoryDatabase {
 
     // Simulates the books table
-    private final Map<UUID, BookEntity>   booksTable   = new LinkedHashMap<>();
+    private final Map<UUID, BookEntity> booksTable = new LinkedHashMap<>();
     // Simulates the members table
     private final Map<UUID, MemberEntity> membersTable = new LinkedHashMap<>();
 
@@ -46,21 +46,21 @@ public class InMemoryDatabase {
         boolean isNew = !booksTable.containsKey(entity.getId());
         booksTable.put(entity.getId(), entity);
         if (isNew) {
-            System.out.println("  [DB] INSERT INTO books VALUES ('" + entity.getTitle() + "', ...)");
+            System.out.println("[DB] INSERT INTO books VALUES ('" + entity.getTitle() + "', ...)");
         } else {
-            System.out.println("  [DB] UPDATE books SET available=" + entity.isAvailable()
+            System.out.println("[DB] UPDATE books SET available=" + entity.isAvailable()
                     + ", borrowed_by='" + entity.getBorrowedBy() + "' WHERE id=...");
         }
         return entity;
     }
 
     public void deleteBook(UUID id) {
-        System.out.println("  [DB] DELETE FROM books WHERE id = '" + id.toString().substring(0,8) + "...'");
+        System.out.println("[DB] DELETE FROM books WHERE id = '" + id.toString().substring(0,8) + "...'");
         booksTable.remove(id);
     }
 
     public boolean existsBookByIsbn(String isbn) {
-        System.out.println("  [DB] SELECT COUNT(*) FROM books WHERE isbn = '" + isbn + "'");
+        System.out.println("[DB] SELECT COUNT(*) FROM books WHERE isbn = '" + isbn + "'");
         return booksTable.values().stream()
                 .anyMatch(e -> e.getIsbn().equals(isbn));
     }
@@ -68,12 +68,12 @@ public class InMemoryDatabase {
     // -- Members CRUD -------------------------------------------------------
 
     public Optional<MemberEntity> findMemberById(UUID id) {
-        System.out.println("  [DB] SELECT * FROM members WHERE id = '" + id.toString().substring(0,8) + "...'");
+        System.out.println("[DB] SELECT * FROM members WHERE id = '" + id.toString().substring(0,8) + "...'");
         return Optional.ofNullable(membersTable.get(id));
     }
 
     public List<MemberEntity> findAllMembers() {
-        System.out.println("  [DB] SELECT * FROM members");
+        System.out.println("[DB] SELECT * FROM members");
         return new ArrayList<>(membersTable.values());
     }
 
@@ -81,9 +81,9 @@ public class InMemoryDatabase {
         boolean isNew = !membersTable.containsKey(entity.getId());
         membersTable.put(entity.getId(), entity);
         if (isNew) {
-            System.out.println("  [DB] INSERT INTO members VALUES ('" + entity.getName() + "', ...)");
+            System.out.println("[DB] INSERT INTO members VALUES ('" + entity.getName() + "', ...)");
         } else {
-            System.out.println("  [DB] UPDATE members SET borrowed_count=" + entity.getBorrowedCount()
+            System.out.println("[DB] UPDATE members SET borrowed_count=" + entity.getBorrowedCount()
                     + " WHERE id=...");
         }
         return entity;

@@ -17,11 +17,11 @@ public class AppConfig {
     public LibraryController buildController() {
 
         // -- Infrastructure / Data Layer ------------------------------------
-        InMemoryDatabase db     = InMemoryDatabase.getInstance();
+        InMemoryDatabase db = InMemoryDatabase.getInstance();
         EntityMapper mapper = new EntityMapper();
 
         // -- Data Adapters (implement Application Ports) -------------------
-        BookRepositoryAdapter bookRepo   = new BookRepositoryAdapter(db, mapper);
+        BookRepositoryAdapter bookRepo = new BookRepositoryAdapter(db, mapper);
         MemberRepositoryAdapter memberRepo = new MemberRepositoryAdapter(db, mapper);
 
         // -- Application Layer ---------------------------------------------

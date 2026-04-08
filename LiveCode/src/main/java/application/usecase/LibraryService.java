@@ -17,8 +17,7 @@ public class LibraryService {
     private final BookRepositoryPort bookRepo;
     private final MemberRepositoryPort memberRepo;
 
-    public LibraryService(BookRepositoryPort bookRepo,
-                          MemberRepositoryPort memberRepo) {
+    public LibraryService(BookRepositoryPort bookRepo, MemberRepositoryPort memberRepo) {
         this.bookRepo = bookRepo;
         this.memberRepo = memberRepo;
     }

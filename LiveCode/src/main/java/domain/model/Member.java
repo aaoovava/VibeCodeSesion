@@ -1,18 +1,21 @@
 package domain.model;
+import lombok.Getter;
+
 import java.util.UUID;
 
 // TOGAF: Business Architecture — Domain Entity
+@Getter
 public class Member {
 
-    private final UUID   id;
+    private final UUID id;
     private final String name;
     private final String email;
     private int borrowedCount;
 
     public Member(UUID id, String name, String email) {
-        this.id            = id;
-        this.name          = name;
-        this.email         = email;
+        this.id = id;
+        this.name = name;
+        this.email = email;
         this.borrowedCount = 0;
     }
 
@@ -29,11 +32,6 @@ public class Member {
     public void decrementBorrowed() {
         if (borrowedCount > 0) borrowedCount--;
     }
-
-    public UUID   getId()           { return id; }
-    public String getName()         { return name; }
-    public String getEmail()        { return email; }
-    public int    getBorrowedCount(){ return borrowedCount; }
 
     @Override
     public String toString() {

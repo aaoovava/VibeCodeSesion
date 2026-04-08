@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 // TOGAF: Technology Domain — DTO Mapper
 // The controller receives DTOs, never domain objects directly
 public class BookDtoMapper {
-
     public BookResponseDto toDto(Book book) {
         return new BookResponseDto(
                 book.getId().toString(),

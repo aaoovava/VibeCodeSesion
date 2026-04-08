@@ -1,11 +1,12 @@
 package domain.valueobject;
 
+import lombok.Getter;
+
 // TOGAF: Business Architecture — Value Object
 // Value Object: no identity, equality by value
+@Getter
 public class ISBN {
-
     private final String value;
-
 
     public ISBN(String value) {
         if (value == null || !value.matches("\\d{3}-\\d{10}")) {
@@ -15,11 +16,6 @@ public class ISBN {
         }
         this.value = value;
     }
-
-    public String getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

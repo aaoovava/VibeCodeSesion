@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 public class MemberRepositoryAdapter implements MemberRepositoryPort {
 
     private final InMemoryDatabase db;
-    private final EntityMapper     mapper;
+    private final EntityMapper mapper;
 
     public MemberRepositoryAdapter(InMemoryDatabase db, EntityMapper mapper) {
-        this.db     = db;
+        this.db = db;
         this.mapper = mapper;
     }
 
