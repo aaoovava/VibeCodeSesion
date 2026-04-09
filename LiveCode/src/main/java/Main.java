@@ -60,12 +60,12 @@ public class Main {
         section("SCENARIO 3: View All Books (GET /api/books)");
 
         List<BookResponseDto> allBooks = controller.getAllBooks();
-        allBooks.forEach(b -> println(CYAN + "  📚 " + RESET + b));
+        allBooks.forEach(b -> println(GREEN + "  " + RESET + b));
 
         // -- Scenario 4: Borrowing a Book ------------------------------------
         section("SCENARIO 4: Olena borrows \"Clean Code\"");
 
-        UUID olenaId    = olena.getId();
+        UUID olenaId = olena.getId();
         UUID cleanCodeId = UUID.fromString(cleanCode.getId());
 
         BookResponseDto borrowed = controller.borrowBook(cleanCodeId, olenaId);
